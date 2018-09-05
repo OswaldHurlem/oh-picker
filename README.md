@@ -59,7 +59,7 @@ Some bullet points for the most important parts of the video are repeated below 
 - When an image is saved in this program, the scene graph is saved along with it, as metadata in a PNG file.
 
 # Running
-Run `build/oh_picker_bgfx.exe`. Make sure `user_data\test.png` is present. Many errors which ought to produce error messages will instead cause the program to hard-crash.
+The Windows executable can be found in oh_picker.zip. Run `build/oh_picker_bgfx.exe`. Make sure `user_data\test.png` is present. Many errors which ought to produce error messages will instead cause the program to hard-crash.
 
 # Building
 This program is Windows-only for the forseeable future. Requires MSVC and Python 3. Inside the root directory, run:

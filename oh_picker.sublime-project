@@ -1,0 +1,90 @@
+{
+	"build_systems":
+	[
+		{
+			"cmd":
+			[
+				"py",
+				"-3",
+				"build_tools\\build.py"
+			],
+			"file_regex": "(.*?)\\(([0-9]+)\\): error",
+			"name": "OH Picker Build",
+			"working_dir": "$project_path",
+			"variants":
+			[
+				{
+					"name":"No codegen",
+					"cmd":
+					[
+						"py",
+						"-3",
+						"build_tools\\build.py",
+						"/cog=none"
+					],
+				},
+				{
+					"name":"Optimized",
+					"cmd":
+					[
+						"py",
+						"-3",
+						"build_tools\\build.py",
+						"/opt=2"
+					],
+				},
+				{
+					"name":"C Preprocessor",
+					"cmd":
+					[
+						"py",
+						"-3",
+						"build_tools\\build.py",
+						"/msvc_mode=cpp"
+					],
+				},
+				{
+					"name": "Run",
+					"cmd":
+					[
+						"build\\oh_picker_bgfx.exe"
+					],
+				},
+				{
+					"name": "GenVectors",
+					"cmd":
+					[
+						"py",
+						"-3",
+						"build_tools\\oh_generate_vectors.py",
+						"code\\oh_generate_vectors.py.h",
+						"OH_GENERATE_VECTORS_PY_H"
+					],
+				},
+				{
+					"name": "TortoiseUpdate",
+					"shell_cmd": "TortoiseProc.exe /command:update /path:$project_path"
+				},
+				{
+					"name": "TortoiseCommit",
+					"shell_cmd": "TortoiseProc.exe /command:commit /path:$project_path"
+				},
+			],
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "build_tools"
+		},
+		{
+			"path": "code"
+		},
+		{
+			"path": "misc"
+		},
+		{
+			"path": "ext_code"
+		}
+	]
+}

@@ -1,0 +1,151 @@
+#define COGDEF 0 // used by Cog Preprocessor
+
+/*<<<
+from contextlib import contextmanager
+import os
+import subprocess
+import shutil
+import re
+
+def whitePrefix(strings):
+    strings = [s for s in strings if s.strip() != '']
+    if not strings: return ''
+    pat = r'\s*'
+    prefix = re.match(pat, strings[0]).group(0)
+    for s in strings:
+        for i in range(len(prefix)):
+            if prefix[i] != s[i]:
+                prefix = prefix[:i]
+                break
+    return prefix
+
+def dedent(lines, newIndent=''):
+    sep, nothing = '\n', ''
+    lines = lines.split(sep)
+    oldIndent = whitePrefix(lines)
+    outLines = []
+    for l in lines:
+        if oldIndent:
+            l = l.replace(oldIndent, nothing, 1)
+        if l and newIndent:
+            l = newIndent + l
+        outLines.append(l)
+    return sep.join(outLines)
+
+indent_stack = []
+indent_sum = 0
+
+tools_dir = 'build_tools'
+scratch_dir = 'build_intermediate'
+
+if os.path.exists(scratch_dir):
+    try:
+        shutil.rmtree(scratch_dir)
+    except Exception as e:
+        print(f'Stopped by error: {e}. What a surprise...')
+
+@contextmanager
+def temp_text_path(filename, text):
+    if not os.path.exists(scratch_dir):
+        os.makedirs(scratch_dir)
+    path = os.path.join(scratch_dir, filename)
+    with open(path, 'w') as f:
+        f.write(text)
+    yield path
+    os.remove(path)
+
+def idt_out(txt = ''):
+    global indent_sum
+    idt_str = '    ' * indent_sum
+    cog.outl(f'{idt_str}{txt}')
+
+@contextmanager
+def cog_brace(sc=False):
+    global indent_sum
+    idt_out('{')
+    indent_stack.append(1)
+    indent_sum += 1
+    yield
+    indent_sum -= indent_stack.pop()
+    idt_out('};' if sc else '}')
+
+@contextmanager
+def cog_idt(indent = 1):
+    global indent_sum
+    indent_stack.append(indent)
+    indent_sum += indent
+    yield
+    indent_sum -= indent_stack.pop()
+
+def embed_bin(binary, array_name, macro=None):
+    hexes = [('0x' + format(b, '02x')) for b in binary]
+    idt_out(f'static const uint8_t {array_name}[{len(hexes)}] = ')
+    with cog_brace(sc = True):
+        chunks = [hexes[x:x+16] for x in range(0, len(hexes), 16)]
+        for chunk in chunks:
+            idt_out(', '.join(chunk) + ',')
+    if macro:
+        idt_out(f'{macro}({array_name})')
+
+def embed_file(rsrc_path, array_name, macro=None):
+    binary = b''
+    with open(rsrc_path, 'rb') as f:
+        binary = f.read()
+    embed_bin(binary, array_name, macro)
+
+# MAYBE recursive?
+def embed_dir(rsrc_dir, macro=None):
+    for name in os.listdir(rsrc_dir):
+        if os.path.isfile(os.path.join(rsrc_dir, name)):
+            embed_file(os.path.join(rsrc_dir, name), name.replace('.','_'), macro)
+
+def embed_shader_for_plat(vd_path, src_path, shader_name, plat):
+    plat_options = dict(
+        v=dict(
+            glsl = '--platform linux',
+            spv  = '--platform linux   -p spirv',
+            dx9  = '--platform windows -p vs_3_0 -O 3',
+            dx11 = '--platform windows -p vs_4_0 -O 3',
+            mtl  = '--platform ios     -p metal  -O 3',
+            pssl = None),
+        f=dict(
+            glsl = '--platform linux',
+            spv  = '--platform linux   -p spirv',
+            dx9  = '--platform windows -p ps_3_0 -O 3',
+            dx11 = '--platform windows -p ps_4_0 -O 3',
+            mtl  = '--platform ios     -p metal  -O 3',
+            pssl = None)
+    )
+    plat_option = plat_options[shader_name[0]][plat]
+    if plat_option == None:
+        idt_out(f'extern const uint8_t* {shader_name}_pssl;')
+        idt_out(f'extern const uint32_t {shader_name}_pssl_size;')
+    else:
+        shaderc_path = os.path.join(tools_dir, 'shaderc.exe')
+        shader_include = '-i ext_code/bgfx/src -i code'
+        os.system(' '.join([
+            shaderc_path,
+            '-f', src_path,
+            shader_include,
+            '--type', shader_name[0],
+            plat_option,
+            '--varyingdef', vd_path,
+            '-o', f'{src_path}.{plat}.bin',
+            '> nul']))
+        embed_file(f'{src_path}.{plat}.bin', f'{shader_name}_{plat}')
+        os.remove(f'{src_path}.{plat}.bin')
+
+
+def embed_shader(vd_src, src, shader_name):
+    vd_filename = f'{shader_name}.def.sc'
+    with temp_text_path(vd_filename, vd_src) as vd_path:
+        with temp_text_path(shader_name, src) as src_path:
+            embed_shader_for_plat(vd_path, src_path, shader_name, 'glsl')
+            embed_shader_for_plat(vd_path, src_path, shader_name, 'spv')
+            embed_shader_for_plat(vd_path, src_path, shader_name, 'dx9')
+            embed_shader_for_plat(vd_path, src_path, shader_name, 'dx11')
+            embed_shader_for_plat(vd_path, src_path, shader_name, 'mtl')
+            embed_shader_for_plat(vd_path, src_path, shader_name, 'pssl')
+    idt_out(f'static const bgfx::EmbeddedShader {shader_name} = BGFX_EMBEDDED_SHADER({shader_name});')
+>>>*/
+//<<>> (checksum: d41d8cd98f00b204e9800998ecf8427e)

@@ -1,0 +1,126 @@
+(These are my notes to myself... not the README :P)
+
+-= CURRENT FEATURES =-
+- CieLab color picking
+- Heirarchy of colors
+- Preview application to image
+- Save as image
+
+-= PLANNED FEATURES =-
+- Analysis (voronoi)
+- Colorblind modes
+- Name with xkcd
+- Export as image or palette file
+
+-=IMGUI TIPS=-
+- Using groups locks hz position
+- GetItemRectSize gets size of last group
+
+-=TODOS=-
+- Save with alt extension
+- Nicely show if colors are out-of-range
+- Stateful non-jank pip dragging
+- Parent cache
+- More sophisticated centering on edited item
+- Use HW cursor
+- All ImGui extensions by Ozzy in one namespace
+- Don't perform big computations unless there's UI interaction
+- State for no file opened
+- Error msg for invalid files
+- Sync with git
+- Replace sider with simple clicky box
+- Copy/pasting
+- Extreme cleanup
+
+-=MAYBES=-
+- Reposition depth range sliders??
+- Stretch/Flip transform gizmos
+- Refine spectrum-drawing code and put into reusable function
+- Add option to remove Cog generated code to build
+- Float precision L*a*b* colors
+- BUILD: Determine include/lib dirs via script?
+- Render to texture so I can have 32 bit colors and HDR :|
+- Remove Shoemake dependency
+- Would be nice to switch to right-handed coordinates (alas)
+- Consolidate cache entries into single item
+
+-=DONE=-
+- Figure out how to change cursor / draw software cursor
+- Figure out why it can't be launched from Sublime Text
+- With const param, limit color range in picker
+- IMGUI: Propose NoDragDrop flag (accepted)
+- IMGUI: Propose Multiple labels for multi-component controls (denied)
+- Change storage of cieLab colors to reflect graphing... {a*, L*, b*)
+- Keep 2D pips in bounds
+- Fix BX_CHECK
+- Display image
+- Figure out why making MemPtr using OH_MK_MEMPTR causes heap corruption
+- Embed resources using cog
+- Change shaders (UGH)
+- Replace Sample ImGui rendering:
+- Rendering: Use Cog for creating inline binaries
+- BUILD: Revise + integrate cog?
+- Inline varying.def.sc
+- Use min/max color constants
+- Don't let spectrum be transparent
+- Draw cursor without squash
+- More disagreement on eulers/quat/mtx conversions... debug!! Replace MtxFromTf3d with consistent-but-slow func
+- NEEDS TO BE A FULL FLEDGED TEST
+- Display cursors properly
+- "3D" view of multiple selection pips
+- Create lookup to increase perf, fix out-of-range artifacts
+    * Render to a L*a*b* target
+- Keep IMGUI ini
+- Tidy up namespaces
+- Display indexed img
+- Apply palette to image
+- Names for Nodes
+- Names for slots
+- Drag drop onto palette
+- Figure out whether oh_palette_gui functions should create windows or whatever the hell
+- Use LodePNG
+- Saving
+- Choose file to open (noc_file_dialog.h)
+- Figure out WTF is wrong with Sublime Text
+- 3 separate windows (image, spectrum, and tree)
+- Move state change/display to separate parts of loop AMAP
+- Clicking color does not select, clicking text does not drag
+- More appropriate ctx menu
+- Big deselect zone at bottom of palette tree
+- Fill tree based on opened image
+- Recompose after drag/drop
+- Z sort cursors
+- Center spectrum around selected item
+- Show whole palette
+- Scene view panning??
+- Fix spectrum layout
+- Allow scene view pan to go beyond legal L*a*b* range
+- Separate panning for each spectrum window
+- Depth range bars
+- Make scale go YXZ
+- Choose opt level in build
+- Follow selected node while editing
+- New TF at root has L=50
+- Reset tf button
+- Work with decomp
+- Remove unused palette entries
+- Resize image view
+- Edit by clicking in spectrum
+- Fix depth sort
+- Show hovered in all 3 views
+- Rotate by clicking
+- Strip unused slots when saving as well
+- More example images
+- FILL DOTS WITH COLOR!!
+
+-=NOPE=-
+- #define GARBAGE(_x) ((__attr__ uninitialized))0
+- Name and pointer for IMGUI
+- macro away "const"
+- #define ImTextureId
+- BUILD: Change build from python + header to just one of the two??
+- Keep 1D pips in bounds (doesn't matter probably)
+- Restrict palette to 16 colors ??
+- Dragdrop preview
+- Pip icon based on id hash (numbers, letters, symbols)
+- Metaprogram shader input structs like in other project
