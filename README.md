@@ -20,7 +20,6 @@ Some bullet points for the most important parts of the video are repeated below 
         - Translation becomes tinting, lightening, or darkening.
         - Reflection becomes inversion of a particular color component
         - Rotation becomes hue shifting, as well as several operations without analogues.
-        [[![Transforms](https://media.giphy.com/media/29HR5yfjnJxwW0Li3i/giphy.gif)](https://giphy.com/gifs/29HR5yfjnJxwW0Li3i)
     - Affine transformations like scaling and skewing can also be applied.
         - Scaling operations typically affect the saturation or contrast of a set of colors.
 - OH Picker uses a Scene Graph (called the "Palette Tree"), a traditional interface for users to apply affine transformations to sets of objects.
@@ -38,7 +37,6 @@ Some bullet points for the most important parts of the video are repeated below 
     - Dragging and dropping individual Color Nodes into the "Assignments" pane changes which palette slots they correspond to.
     - Other operations can be performed on the nodes via buttons at the top, or by right-clicking.
     - The values held by a color or transform node can be modified directly using Dear ImGui Dragger controls.
-    [[![Drag/Dropping](https://media.giphy.com/media/5jUv8T7iXSO1wi8cxy/giphy.gif)](https://giphy.com/gifs/5jUv8T7iXSO1wi8cxy)
 - OH Picker also displays all nodes, as well as a "Spectrum" of displayable L\*a\*b\* colors, in a triplet of orthagonal cutaway views
     - These views are:
         - First: Top-down view, showing nodes' a\* and b\* values.
@@ -54,7 +52,6 @@ Some bullet points for the most important parts of the video are repeated below 
     - Nodes can be selected here and moved around, though this can be a little finnicky.
         - Multiple nodes may be selected by ctrl-clicking
     - Right clicking and dragging will change the rotation of a sole selected transform node.
-    [[![Spectrum Editing](https://media.giphy.com/media/fQSIXCX2ut24woq0j2/giphy.gif)](https://giphy.com/gifs/fQSIXCX2ut24woq0j2)
 - When an image is saved in this program, the scene graph is saved along with it, as metadata in a PNG file.
 
 # Running
