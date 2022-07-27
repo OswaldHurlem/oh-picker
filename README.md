@@ -1,6 +1,5 @@
 # OH Picker
 OH Picker is an experimental program for applying [affine transformations](https://en.wikipedia.org/wiki/Affine_transformation) to colors in [L\*a\*b\* (aka CIELAB) space](https://en.wikipedia.org/wiki/CIELAB_color_space) using a [scene graph](https://en.wikipedia.org/wiki/Scene_graph). OH Picker was made as a personal exercise in working with both L\*a\*b\* and the [Dear ImGui](https://github.com/ocornut/imgui) library.
-[![OH Picker in action](https://media.giphy.com/media/9r8Gzni01ZfJHpfh1X/giphy.gif)](https://giphy.com/gifs/9r8Gzni01ZfJHpfh1X)
 
 OH Picker presently lacks a known market or user base, and so is **unlikely to undergo further development**. If you find this program useful or worth improving in any way, please star it and/or provide feedback via an Issue.
 
